@@ -7,14 +7,14 @@ import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
 
-    const {email, setEmail} = useState("");
-    const {password, setPassword} = useState("");
-    const {error, setError} = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     const router = useRouter();
 
     const handleSubmit = async (e) => {
-        e.preventDefualt();
+        e.preventDefault();
 
         try {
             const res = await signIn("credentials", {
@@ -28,7 +28,7 @@ export default function LoginForm() {
                 return;
             }
 
-            router.replace("dashboard");
+            router.replace('dashboard');
 
         } catch (error) {
             console.log(error);
